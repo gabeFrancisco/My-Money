@@ -13,6 +13,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using MyMoney.Api.Context;
+using MyMoney.Api.Models.Interfaces;
+using MyMoney.Api.Services;
 
 namespace MyMoney.Api
 {
@@ -32,6 +34,8 @@ namespace MyMoney.Api
 
             services.AddDbContext<AppDbContext>(options => 
                 options.UseNpgsql(npgsqlConnection));
+
+            services.AddScoped<IBillingCycleService, BillingCycleService>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
