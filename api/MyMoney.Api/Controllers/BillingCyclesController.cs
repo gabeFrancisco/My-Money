@@ -17,11 +17,28 @@ namespace MyMoney.Api.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> GetAll()
         {
             try
             {
                 return Ok(await _billingCycleService.GetAll());
+            }
+            catch (ArgumentException ex)
+            {
+                return StatusCode((int)HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
+
+        [HttpGet]
+        [Route("{id}", Name = "GetWithId")]
+        public async Task<IActionResult> Get(int id)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            try
+            {
+                return Ok(await _billingCycleService.Read(id));
             }
             catch (ArgumentException ex)
             {
