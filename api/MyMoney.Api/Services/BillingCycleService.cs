@@ -31,6 +31,7 @@ namespace MyMoney.Api.Services
                 return null;
             
             await _context.BillingCycles.AddAsync(billingCycle);
+            await _context.SaveChangesAsync();
             return billingCycle;
         }
 
