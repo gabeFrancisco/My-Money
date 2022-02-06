@@ -1,0 +1,21 @@
+header {
+  background: linear-gradient(to right, #005AA7, #9CECFB);
+  display: flex;
+  align-items: baseline;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.Logo {
+  margin: 10px;
+  text-decoration: none;
+  color: #fff;
+  font-size: 1.5rem;
+}
+
+.Logo i {
+  margin-right: 5px;
+}
+
+.Logo a:hover, .Logo:hover{
+    color:rgb(143, 229, 183);
+}
