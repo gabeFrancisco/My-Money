@@ -27,9 +27,9 @@ namespace MyMoney.Api.Services
         /// <returns>Created BillingCycle object</returns>
         public async Task<BillingCycle> Create(BillingCycle billingCycle)
         {
-            if(billingCycle == null)
+            if (billingCycle == null)
                 return null;
-            
+
             await _context.BillingCycles.AddAsync(billingCycle);
             await _context.SaveChangesAsync();
             return billingCycle;
@@ -44,14 +44,14 @@ namespace MyMoney.Api.Services
         {
             var result = await _context.BillingCycles
                 .SingleOrDefaultAsync(x => x.Id == id);
-            
-            if(result == null)
+
+            if (result == null)
                 return false;
 
-             _context.BillingCycles.Remove(result);
-             await _context.SaveChangesAsync();
-             
-             return true;
+            _context.BillingCycles.Remove(result);
+            await _context.SaveChangesAsync();
+
+            return true;
         }
 
         /// <summary>
@@ -81,6 +81,32 @@ namespace MyMoney.Api.Services
         }
 
         /// <summary>
+        /// Returns each sum of credits and debits
+        /// </summary>
+        /// <returns></returns>
+        public async Task<Summary> Summary(int billingCycleId)
+        {
+            var billingCycle = await _context.BillingCycles
+                .Where(x => x.Id == billingCycleId)
+                .Include(x => x.Credits)
+                .Include(x => x.Debts)
+                .SingleOrDefaultAsync();
+
+            var summary = new Summary
+            {
+                Credits = billingCycle.Credits
+                    .Select(x => x.Value)
+                    .Sum(),
+
+                Debts = billingCycle.Debts
+                    .Select(x => x.Value)
+                    .Sum()
+            };
+
+            return summary;
+        }
+
+        /// <summary>
         /// Updates a billing cycle
         /// </summary>
         /// <param name="billingCycle"></param>
@@ -89,10 +115,10 @@ namespace MyMoney.Api.Services
         {
             var result = await _context.BillingCycles
                 .SingleOrDefaultAsync(x => x.Id == billingCycle.Id);
-            
-            if(result == null)
+
+            if (result == null)
                 return null;
-            
+
             _context.Entry(result).CurrentValues.SetValues(billingCycle);
             await _context.SaveChangesAsync();
 

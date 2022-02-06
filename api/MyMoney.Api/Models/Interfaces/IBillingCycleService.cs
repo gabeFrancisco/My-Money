@@ -11,5 +11,6 @@ namespace MyMoney.Api.Models.Interfaces
          Task<BillingCycle> Update(BillingCycle billingCycle);
          Task<bool> Delete(int id);
          Task<int> Count();
+         Task<Summary> Summary(int billingCycleId);
     }
 }
