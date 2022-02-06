@@ -3,10 +3,11 @@ header {
   display: flex;
   align-items: baseline;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  z-index: 100;
 }
 
 .Logo {
-  margin: 10px;
+  margin: 10px 10px 10px 35px;
   text-decoration: none;
   color: #fff;
   font-size: 1.5rem;
@@ -19,3 +20,4 @@ header {
 .Logo a:hover, .Logo:hover{
     color:rgb(143, 229, 183);
 }
+

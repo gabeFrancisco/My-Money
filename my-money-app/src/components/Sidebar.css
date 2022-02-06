@@ -1,0 +1,111 @@
+@keyframes ListBorderAnim {
+  0% {
+    border-left: 0px solid #fff;
+  }
+  100% {
+    border-left: 3px solid #fff;
+  }
+}
+
+@keyframes MenuCollapseOpen {
+  0% {
+    width: 0vw;
+  }
+  100% {
+    width: 15vw;
+  }
+}
+
+@keyframes MenuCollapseClose {
+  0% {
+    width: 15vw;
+  }
+  100% {
+    width: 0vw;
+  }
+}
+
+.Collapsable-Area {
+  display: flex;
+}
+
+.Collapse-Close {
+  animation: MenuCollapseClose 0.5s forwards;
+}
+
+.Collapse-Open {
+  animation: MenuCollapseOpen 0.5s forwards;
+}
+
+.Sidebar {
+  background: linear-gradient(to bottom, #025195, #2a6fac) repeat;
+  color: #fff;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.Sidebar ul {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.Sidebar ul li .group{
+	display: flex;
+	align-items: baseline;
+}
+
+.Sidebar ul li {
+  display: flex;
+	justify-content: space-between;
+	align-items: center;
+  margin: 0;
+  list-style-type: none;
+  padding: 10px 10px 10px 25px;
+}
+
+.Sidebar ul li:hover {
+  background-color: #01447e;
+  cursor: pointer;
+  animation: ListBorderAnim 0.2s forwards;
+}
+
+.Sidebar ul li i {
+  margin-right: 10px;
+}
+
+.Collapse-Trigger {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: linear-gradient(
+      to bottom,
+      #2a6fac,
+      #8898a8,
+      #9abcdf,
+      #8898a8,
+      #2a6fac
+    )
+    repeat;
+  width: 5px;
+  justify-content: center;
+}
+
+.Collapsable-Area #collapse-button {
+  background: linear-gradient(to right, #adbecc, #b6d1e9);
+  padding: 13px;
+  border-radius: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  margin-left: -10px;
+  border: none;
+	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+	cursor: pointer;
+}
+
+.Collapse-Trigger #collapse-button i {
+  font-size: 1.2rem;
+  color: #005aa7;
+}
