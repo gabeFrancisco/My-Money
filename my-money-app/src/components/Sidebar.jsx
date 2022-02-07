@@ -1,19 +1,28 @@
 import React, { useState } from "react";
 
 import "./Sidebar.css";
+import Submenu from "./Submenu";
 
 function Sidebar(props) {
-  const [collapse, setCollapse] = useState(true);
+  const [sidebarCollapse, setSidebarCollapse] = useState(true);
   const [sidebarStyle, setSidebarStyle] = useState("Collapse-Open");
 
-  function changeCollapse() {
-    if (collapse === true) {
-      setCollapse(false);
+  function changeCollapseSideBar() {
+    if (sidebarCollapse === true) {
+      setSidebarCollapse(false);
       setSidebarStyle("Collapse-Close");
     } else {
-      setCollapse(true);
+      setSidebarCollapse(true);
       setSidebarStyle("Collapse-Open");
     }
+  }
+
+  const [submenuCollapse, setSubmenuCollapse] = useState(true);
+
+  function changeCollapseSubMenu() {
+    (submenuCollapse === true) 
+      ? setSubmenuCollapse(false) 
+      : setSubmenuCollapse(true);
   }
 
   return (
@@ -21,20 +30,27 @@ function Sidebar(props) {
       <nav className={`Sidebar ${sidebarStyle}`}>
         <ul>
           <li>
-            <div className="group">
-              <i class="fas fa-chart-area"></i>Dashboard
+            <div className="Menu-Item">
+              <div className="group">
+                <i class="fas fa-chart-area"></i>Dashboard
+              </div>
             </div>
           </li>
           <li>
-            <div className="group">
-              <i class="fas fa-edit"></i>Cadastro
+            <div className="Menu-Item">
+              <div className="group">
+                <i class="fas fa-edit"></i>Cadastro
+              </div>
+              <button id="subMenuButton" onClick={() => changeCollapseSubMenu()}>
+                <i class="fas fa-caret-down"></i>
+              </button>
             </div>
-            <i class="fas fa-caret-down"></i>
+            {submenuCollapse && <Submenu/>}
           </li>
         </ul>
       </nav>
       <div className="Collapse-Trigger">
-        <button onClick={() => changeCollapse()} id="collapse-button">
+        <button onClick={() => changeCollapseSideBar()} id="collapse-button">
           <i class="fas fa-arrows-alt-h"></i>
         </button>
       </div>
