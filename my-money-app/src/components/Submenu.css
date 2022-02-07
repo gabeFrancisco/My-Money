@@ -1,20 +1,20 @@
-@keyframes SubmenuFade{
-    0%{
-        opacity: 0;
-    }
-    100%{
-        opacity: 100%;
-    }
+@keyframes SubmenuFade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 100%;
+  }
 }
 
 .Submenu ul {
-    font-size: 0.8rem;
-    display: flex;
-    flex-direction: column;
-    padding: 0;
-    margin-top: 15px;
-    animation: SubmenuFade 0.5s forwards; 
-  }
+  font-size: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin-top: 15px;
+  animation: SubmenuFade 0.5s forwards;
+}
 
 .Submenu ul li {
   font-size: 0.8rem;
@@ -25,6 +25,7 @@
   white-space: nowrap;
 }
 
-.Submenu ul li:hover {
-  background-color: #023766;
+.Submenu ul li a {
+  color: #fff;
+  text-decoration: none;
 }

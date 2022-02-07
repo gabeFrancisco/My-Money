@@ -89,9 +89,11 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+	color: #fff;
+	text-decoration: none;
 }
 
-.Sidebar ul > li:hover {
+.Sidebar ul>li:hover {
   background-color: #01447e;
   cursor: pointer;
   animation: ListBorderAnim 0.2s forwards;
@@ -99,12 +101,6 @@
 
 .Sidebar ul li i {
   margin-right: 10px;
-}
-
-.Sidebar ul li #subMenuButton {
-  background: none;
-  border: none;
-  color: #fff;
 }
 
 .Collapse-Trigger {

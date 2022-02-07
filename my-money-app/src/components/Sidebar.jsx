@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import "./Sidebar.css";
 import Submenu from "./Submenu";
 
+import { Link } from 'react-router-dom'
+
 function Sidebar(props) {
   const [sidebarCollapse, setSidebarCollapse] = useState(true);
   const [sidebarStyle, setSidebarStyle] = useState("Collapse-Open");
@@ -32,18 +34,17 @@ function Sidebar(props) {
           <li>
             <div className="Menu-Item">
               <div className="group">
-                <i class="fas fa-chart-area"></i>Dashboard
+                <i class="fas fa-chart-area"></i>
+                <Link to="/" className="Menu-Item">Dashboard</Link>
               </div>
             </div>
           </li>
-          <li>
+          <li onClick={() => changeCollapseSubMenu()}>
             <div className="Menu-Item">
               <div className="group">
                 <i class="fas fa-edit"></i>Cadastro
               </div>
-              <button id="subMenuButton" onClick={() => changeCollapseSubMenu()}>
                 <i class="fas fa-caret-down"></i>
-              </button>
             </div>
             {submenuCollapse && <Submenu/>}
           </li>
