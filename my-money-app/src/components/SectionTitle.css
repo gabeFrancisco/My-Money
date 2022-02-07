@@ -1,0 +1,7 @@
+.SectionTitle{
+
+    flex-grow: 1;
+    color: rgb(84, 112, 149);
+    width: fit-content;
+    overflow: hidden;
+}

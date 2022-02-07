@@ -1,0 +1,25 @@
+.ValueBox{
+    display: flex;
+    flex-direction: row;
+    color: #fff;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 7px;
+    width: 24vw;
+}
+
+.ValueBox .Column{
+    display: flex;
+    flex-direction: column;
+    margin: 5px 5px 5px 10px;
+}
+
+.ValueBox .Column span{
+    font-size: 0.9rem;
+}
+
+.ValueBox .Icon{
+    font-size: 3.8rem;
+    color: rgba(68, 68, 68, 0.294);
+    margin-right: 10px;
+}
