@@ -1,18 +1,15 @@
-import { createStore, combineReducers} from 'redux'
+import { applyMiddleware, createStore, combineReducers } from "redux";
+import { composeWithDevTools } from "redux-devtools-extension";
+import dashboardReducer from "./reducers/dashboardReducer";
+
+import thunk from "redux-thunk";
 
 const reducers = combineReducers({
-  dashboard: () => (
-    {
-      summary: {
-        credit: 100,
-        debt: 50
-      }
-    }
-  )
-})
+  dashboard: dashboardReducer,
+});
 
-function storeConfig(){
-  return createStore(reducers)
+function storeConfig() {
+  return createStore(reducers, composeWithDevTools(applyMiddleware(thunk)));
 }
 
-export default storeConfig
+export default storeConfig;

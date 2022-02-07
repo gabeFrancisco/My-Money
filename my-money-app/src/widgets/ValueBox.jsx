@@ -4,7 +4,7 @@ import './ValueBox.css'
 
 function ValueBox(props){
   const style={
-    backgroundColor: props.color
+    background: `linear-gradient(to top, ${props.bottomColor}, ${props.topColor} )`
   }
 
   return(

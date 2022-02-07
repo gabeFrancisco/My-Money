@@ -1,44 +1,43 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import SectionTitle from "../components/SectionTitle";
 import ValueBox from "../widgets/ValueBox";
 
-import axios from "axios";
 import { connect } from "react-redux";
 
-function Dashboard(props) {
-  // const [data, setData] = useState({});
-  // useEffect(() => {
-  //   axios
-  //     .get("https://localhost:5001/api/BillingCycles/summary?id=1")
-  //     .then((res) => setData(res.data));
-  // }, []);
+import { getSummary } from '../store/actions/dashboardActions'
 
-  const { credit, debt } = props.summary
+function Dashboard(props) {
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => props.getData(), [ ])
+  const { credits, debts } = props.summary;
 
   return (
-    <div>
+    <div className="fadeIn">
       <SectionTitle
         title="Dashboard"
         subtitle="Aqui você pode consultar os seus ciclos de pagamentos!"
       />
       <div className="row-content">
         <ValueBox
-          color="#1abc9c"
-          value={credit}
+          topColor="#1abc9c"
+          bottomColor="#16a085"
+          value={credits}
           description="Total de Créditos"
           icon="fas fa-hand-holding-usd"
         />
 
         <ValueBox
-          color="#e74c3c"
-          value={debt}
+          topColor="#e74c3c"
+          bottomColor="#c0392b"
+          value={debts}
           description="Total de Débitos"
           icon="fas fa-balance-scale"
         />
 
         <ValueBox
-          color="#3498db"
-          value={credit - debt}
+          topColor="#3498db"
+          bottomColor="#2980b9"
+          value={credits - debts}
           description="Total de Ganhos"
           icon="fas fa-money-bill-wave"
         />
@@ -49,8 +48,16 @@ function Dashboard(props) {
 
 function mapStateToProps(state) {
   return {
-    summary: state.dashboard.summary
+    summary: state.dashboard.summary,
   };
 }
 
-export default connect(mapStateToProps)(Dashboard);
+function mapDispatchToProps(dispatch){
+  return{
+    getData(){
+      dispatch(getSummary())
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
