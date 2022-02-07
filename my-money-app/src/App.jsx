@@ -15,7 +15,7 @@ function App() {
         <Header />
         <div className="App-Area">
           <Sidebar />
-          <div className="m-4 Content">
+          <div className="m-4 mt-5 Content">
             <Routes>
               <Route path="/" element={<Dashboard />} />
               <Route path="/billingCycle" element={<BillingCycle />}/>

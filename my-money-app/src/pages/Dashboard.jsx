@@ -2,14 +2,18 @@ import React, { useEffect, useState } from "react";
 import SectionTitle from "../components/SectionTitle";
 import ValueBox from "../widgets/ValueBox";
 
-import axios from 'axios'
+import axios from "axios";
+import { connect } from "react-redux";
 
-function Dashboard() {
-  const [data, setData] = useState({})
-  useEffect(() => {
-    axios.get("https://localhost:5001/api/BillingCycles/summary?id=1")
-      .then(res => setData(res.data))
-  }, [])
+function Dashboard(props) {
+  // const [data, setData] = useState({});
+  // useEffect(() => {
+  //   axios
+  //     .get("https://localhost:5001/api/BillingCycles/summary?id=1")
+  //     .then((res) => setData(res.data));
+  // }, []);
+
+  const { credit, debt } = props.summary
 
   return (
     <div>
@@ -20,21 +24,21 @@ function Dashboard() {
       <div className="row-content">
         <ValueBox
           color="#1abc9c"
-          value={data.credits}
+          value={credit}
           description="Total de Créditos"
           icon="fas fa-hand-holding-usd"
         />
 
         <ValueBox
           color="#e74c3c"
-          value={data.debts}
+          value={debt}
           description="Total de Débitos"
           icon="fas fa-balance-scale"
         />
 
         <ValueBox
           color="#3498db"
-          value={data.credits - data.debts}
+          value={credit - debt}
           description="Total de Ganhos"
           icon="fas fa-money-bill-wave"
         />
@@ -43,4 +47,10 @@ function Dashboard() {
   );
 }
 
-export default Dashboard;
+function mapStateToProps(state) {
+  return {
+    summary: state.dashboard.summary
+  };
+}
+
+export default connect(mapStateToProps)(Dashboard);
