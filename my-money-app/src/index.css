@@ -39,8 +39,22 @@ code {
   flex-direction: row;
   margin: 0 auto;
   text-align: center;
+  justify-content: center;
+}
+
+.column-content {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  text-align: center;
+  justify-content: center;
 }
 
 .fadeIn {
   animation: FadeIn 1s forwards;
+}
+
+.styless-btn{
+  background: none;
+  border: none
 }

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import SectionTitle from "../components/SectionTitle";
-import ValueBox from "../widgets/ValueBox";
+import ValueBox from "../widgets/ValueBox/ValueBox";
 
 import { connect } from "react-redux";
 
@@ -15,9 +15,9 @@ function Dashboard(props) {
     <div className="fadeIn">
       <SectionTitle
         title="Dashboard"
-        subtitle="Aqui você pode consultar os seus ciclos de pagamentos!"
+        subtitle="Veja o sumário dos seus siclos aqui!"
       />
-      <div className="row-content">
+      <div className="row-content mt-3 center">
         <ValueBox
           topColor="#1abc9c"
           bottomColor="#16a085"

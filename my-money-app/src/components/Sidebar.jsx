@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import "./Sidebar.css";
 import Submenu from "./Submenu";
 
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 function Sidebar(props) {
   const [sidebarCollapse, setSidebarCollapse] = useState(true);
@@ -22,8 +22,8 @@ function Sidebar(props) {
   const [submenuCollapse, setSubmenuCollapse] = useState(true);
 
   function changeCollapseSubMenu() {
-    (submenuCollapse === true) 
-      ? setSubmenuCollapse(false) 
+    submenuCollapse === true
+      ? setSubmenuCollapse(false)
       : setSubmenuCollapse(true);
   }
 
@@ -32,21 +32,23 @@ function Sidebar(props) {
       <nav className={`Sidebar ${sidebarStyle}`}>
         <ul>
           <li>
-            <div className="Menu-Item">
-              <div className="group">
-                <i class="fas fa-chart-area"></i>
-                <Link to="/" className="Menu-Item">Dashboard</Link>
+            <Link to="/" className="Menu-Item">
+              <div className="Menu-Item">
+                <div className="group">
+                  <i class="fas fa-chart-area"></i>
+                  Dashboard
+                </div>
               </div>
-            </div>
+            </Link>
           </li>
-          <li onClick={() => changeCollapseSubMenu()}>
-            <div className="Menu-Item">
+          <li>
+            <div onClick={() => changeCollapseSubMenu()} className="Menu-Item">
               <div className="group">
                 <i class="fas fa-edit"></i>Cadastro
               </div>
-                <i class="fas fa-caret-down"></i>
+              <i class="fas fa-caret-down"></i>
             </div>
-            {submenuCollapse && <Submenu/>}
+            {submenuCollapse && <Submenu />}
           </li>
         </ul>
       </nav>

@@ -1,0 +1,7 @@
+.TabsHeader{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0;
+    border-bottom: 1px solid #ccc;
+}
