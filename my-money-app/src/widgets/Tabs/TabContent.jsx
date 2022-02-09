@@ -1,11 +1,23 @@
-import React from 'react'
+import React from "react";
 
-function TabContent(props){
-  return(
-    <div>
+import { connect } from "react-redux";
 
-    </div>
-  )
+function TabContent(props) {
+  const selected = props.tabId === props.target;
+
+  return (
+    selected && (
+      <div>
+        <h1>{props.content}</h1>
+      </div>
+    )
+  );
 }
 
-export default TabContent
+function mapStateToProps(state) {
+  return {
+    tabId: state.tabs.tabIndex,
+  };
+}
+
+export default connect(mapStateToProps)(TabContent);
