@@ -4,11 +4,12 @@ import ValueBox from "../widgets/ValueBox/ValueBox";
 
 import { connect } from "react-redux";
 
-import { getSummary } from '../store/actions/dashboardActions'
+import { getSummary } from "../store/actions/dashboardActions";
+import Row from "../components/Row";
 
 function Dashboard(props) {
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(() => props.getData(), [ ])
+  useEffect(() => props.getData(), []);
   const { credits, debts } = props.summary;
 
   return (
@@ -17,7 +18,7 @@ function Dashboard(props) {
         title="Dashboard"
         subtitle="Veja o sumário dos seus siclos aqui!"
       />
-      <div className="row-content mt-3 center">
+      <Row>
         <ValueBox
           topColor="#1abc9c"
           bottomColor="#16a085"
@@ -41,7 +42,7 @@ function Dashboard(props) {
           description="Total de Ganhos"
           icon="fas fa-money-bill-wave"
         />
-      </div>
+      </Row>
     </div>
   );
 }
@@ -52,12 +53,12 @@ function mapStateToProps(state) {
   };
 }
 
-function mapDispatchToProps(dispatch){
-  return{
-    getData(){
-      dispatch(getSummary())
-    }
-  }
+function mapDispatchToProps(dispatch) {
+  return {
+    getData() {
+      dispatch(getSummary());
+    },
+  };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

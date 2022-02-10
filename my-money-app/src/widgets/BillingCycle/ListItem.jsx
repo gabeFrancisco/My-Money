@@ -1,6 +1,6 @@
 import React from "react";
 
-function BillingCycleItem(props) {
+function ListItem(props) {
   return (
     <tr index={props.index}>
       <td>{props.name}</td>
@@ -10,4 +10,4 @@ function BillingCycleItem(props) {
   );
 }
 
-export default BillingCycleItem;
+export default ListItem;

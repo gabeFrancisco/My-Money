@@ -30,6 +30,15 @@ function Sidebar(props) {
   return (
     <div className="Collapsable-Area">
       <nav className={`Sidebar ${sidebarStyle}`}>
+        <div className="Logo-Wrapper">
+
+        <Link to="/" className="Logo">
+          <i class="far fa-money-bill-alt"></i>
+          <span>
+            <b>My</b> Money
+          </span>
+        </Link>
+        </div>
         <ul>
           <li>
             <Link to="/" className="Menu-Item">

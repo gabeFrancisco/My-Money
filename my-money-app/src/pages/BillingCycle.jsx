@@ -4,12 +4,13 @@ import TabHeader from "../widgets/Tabs/TabHeader";
 import Tabs from "../widgets/Tabs/Tabs";
 import TabsContent from "../widgets/Tabs/TabsContent";
 import TabsHeader from "../widgets/Tabs/TabsHeader";
-import BillingCycleList from "../components/BillingCycleList";
+import List from "../widgets/BillingCycle/List";
 
 import { connect } from 'react-redux'
 import { getList } from '../store/actions/billingCycleActions'
 import { useEffect } from "react";
-import BillingCycleForm from "../components/BillingCycleForm";
+import Create from "../widgets/BillingCycle/Create";
+import Column from "../components/Column";
 
 function BillingCycle(props) {  
   useEffect(() => (props.fetchData()), [])
@@ -20,9 +21,8 @@ function BillingCycle(props) {
         title="Ciclos de Pagamento"
         subtitle="Gerencie todos os ciclos aquie nesta sessão"
       />
-
-      <div className="column-content mt-3">
-        <Tabs>
+      <Column>
+      <Tabs>
           <TabsHeader>
             <TabHeader title="Listar" icon="fas fa-list" target={1}></TabHeader>
             <TabHeader title="Incluir" icon="fas fa-plus" target={2}></TabHeader>
@@ -31,14 +31,14 @@ function BillingCycle(props) {
           </TabsHeader>
           <TabsContent>
             <TabContent target={1}>
-              <BillingCycleList/>
+              <List/>
             </TabContent>
             <TabContent target={2}>
-              <BillingCycleForm/>
+              <Create/>
             </TabContent>
           </TabsContent>
         </Tabs>
-      </div>
+      </Column>
     </div>
   );
 }

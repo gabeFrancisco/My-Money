@@ -12,7 +12,6 @@ function App() {
   return (
     <div>
       <Router>
-        <Header />
         <div className="App-Area">
           <Sidebar />
           <div className="m-4 mt-5 Content">

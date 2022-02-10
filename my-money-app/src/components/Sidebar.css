@@ -51,7 +51,14 @@
 
 .Collapsable-Area {
   display: flex;
+  z-index: 99;
 }
+
+.Collapsable-Area .Logo-Wrapper{
+  margin: 1.7rem 0 1.7rem 0;
+  white-space: nowrap;
+}
+
 
 .Collapse-Close {
   animation: MenuCollapseClose 0.5s forwards;
@@ -62,10 +69,10 @@
 }
 
 .Sidebar {
-  background: linear-gradient(to bottom, #025195, #2a6fac) repeat;
+  background: linear-gradient(to bottom, #0b63b1, #00294d) repeat;
   color: #fff;
-  height: 100vh;
   overflow: hidden;
+  height: 100vh;
 }
 
 .Sidebar ul {
@@ -106,7 +113,7 @@
 .Collapse-Trigger {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 100%;
   background: linear-gradient(
       to bottom,
       #2a6fac,

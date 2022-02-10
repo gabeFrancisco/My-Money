@@ -1,17 +1,17 @@
 import React, { useEffect } from "react";
 
 import { connect } from "react-redux";
-import { getList } from "../store/actions/billingCycleActions";
-import BillingCycleItem from "./BillingCycleItem";
+import { getList } from "../../store/actions/billingCycleActions";
+import ListItem from "./ListItem";
 
-function BillingCycleList(props) {
+function List(props) {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => props.fetchData(), [props.billingCycles]);
 
   return (
     <div>
-      <table className="table table-hover">
-        <thead>
+      <table className="table table-hover ">
+        <thead className="border">
           <tr>
             <th>Nome</th>
             <th>Mês</th>
@@ -21,7 +21,7 @@ function BillingCycleList(props) {
         <tbody>
           {props.billingCycles.map((el, index) => {
             return (
-              <BillingCycleItem
+              <ListItem
                 index={index}
                 name={el.name}
                 month={el.month}
@@ -49,4 +49,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(BillingCycleList);
+export default connect(mapStateToProps, mapDispatchToProps)(List);

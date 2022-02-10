@@ -3,12 +3,12 @@ import React from "react";
 import { useForm } from "react-hook-form";
 
 import { connect } from "react-redux";
-import { create } from "../store/actions/billingCycleActions";
-import { setTab } from "../store/actions/tabsActions";
+import { create } from "../../store/actions/billingCycleActions";
+import { setTab } from "../../store/actions/tabsActions";
 
-import FormValidation from "./FormValidation";
+import FormValidation from "../Validation/FormValidation";
 
-function BillingCycleForm(props) {
+function Create(props) {
   const {
     register,
     formState: { errors },
@@ -31,7 +31,7 @@ function BillingCycleForm(props) {
             placeholder="Janeiro"
             {...register("name", { required: true })}
           />
-          {errors.name && <FormValidation message="Name cannot be null!" />}
+          {errors.name && <FormValidation message="Nome não pode estar vazio!" />}
         </div>
         <div className="col">
           <label>Mês</label>
@@ -45,7 +45,7 @@ function BillingCycleForm(props) {
             {...register("month", { required: true })}
           />
           {errors.month && (
-            <FormValidation message="Month cannot be null and needs to be between 1 and 12" />
+            <FormValidation message="Mês precisa ser entre 1 e 12!" />
           )}
         </div>
         <div className="col">
@@ -59,7 +59,7 @@ function BillingCycleForm(props) {
             placeholder={new Date().getFullYear()}
             {...register("year", { required: true })}
           />
-          {errors.year && <FormValidation message="Year cannot be null" />}
+          {errors.year && <FormValidation message="Ano não pode estar vazio!" />}
         </div>
       </div>
       <div className="form-row d-flex d-inline justify-content-center mt-4">
@@ -82,4 +82,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(null, mapDispatchToProps)(BillingCycleForm);
+export default connect(null, mapDispatchToProps)(Create);
