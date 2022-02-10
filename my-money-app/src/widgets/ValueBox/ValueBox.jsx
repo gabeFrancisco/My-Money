@@ -1,8 +1,4 @@
-import React, { useEffect } from 'react'
-
 import './ValueBox.css'
-
-import { useState } from 'react'
 
 function ValueBox(props){
   const style={

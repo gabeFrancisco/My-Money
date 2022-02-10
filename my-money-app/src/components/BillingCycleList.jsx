@@ -5,14 +5,14 @@ import { getList } from "../store/actions/billingCycleActions";
 import BillingCycleItem from "./BillingCycleItem";
 
 function BillingCycleList(props) {
-  useEffect(() => props.fetchData(), []);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => props.fetchData(), [props.billingCycles]);
 
   return (
     <div>
-      <table className="table table-hover table-borderless">
+      <table className="table table-hover">
         <thead>
           <tr>
-            <th scope="col">Nº</th>
             <th>Nome</th>
             <th>Mês</th>
             <th>Ano</th>
@@ -22,7 +22,7 @@ function BillingCycleList(props) {
           {props.billingCycles.map((el, index) => {
             return (
               <BillingCycleItem
-                index={index+1}
+                index={index}
                 name={el.name}
                 month={el.month}
                 year={el.year}

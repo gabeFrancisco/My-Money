@@ -7,6 +7,17 @@
   }
 }
 
+@keyframes FadeDrop {
+  0% {
+    opacity: 0%;
+    margin-top: 0;
+  }
+  100% {
+    margin-top: 0.7rem;
+    opacity: 100%;
+  }
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -53,6 +64,10 @@ code {
 
 .fadeIn {
   animation: FadeIn 1s forwards;
+}
+
+.fadeDrop{
+  animation: FadeDrop 1s forwards;
 }
 
 .styless-btn{

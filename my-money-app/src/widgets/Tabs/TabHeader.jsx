@@ -10,7 +10,7 @@ function TabHeader(props) {
       props.setTabIndex(props.target)
     }}>
       <button  class="styless-btn">
-        <i className={props.icon}></i>
+        <i className={`${props.icon} mr-2`}></i>
         {props.title}
       </button>
     </li>

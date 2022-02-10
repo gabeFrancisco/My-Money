@@ -1,6 +1,5 @@
 import { applyMiddleware, createStore, combineReducers } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
-import { reducer as formReducer} from 'redux-form'
 
 import thunk from "redux-thunk";
 
@@ -12,7 +11,6 @@ const reducers = combineReducers({
   dashboard: dashboardReducer,
   tabs: tabReducer,
   billingCycles: billingCycleReducer,
-  form: formReducer
 });
 
 
