@@ -5,7 +5,7 @@
         border-top: 5px rgb(166, 181, 199) solid;
     }
     100%{
-        border-top: 5px rgb(46, 81, 126) solid;
+        border-top: 5px #0b6dc2 solid;
     }
     
 }
@@ -15,8 +15,6 @@
     list-style-type: none;
     border-right: 1px solid #ccc;
     padding: 7px 15px 7px 15px;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
 }
 
 .TabHeader:hover{
@@ -34,22 +32,18 @@
 }
 
 .TabHeader button{
-    color: rgb(46, 81, 126);
+    color: #0b6dc2;
 }
 
 .TabHeader-Selected{
     list-style-type: none;
     border-right: 1px solid #ccc;
     padding: 7px 15px 7px 15px;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
     animation: TabAnimSelected 0.7s;
-    border-top: 5px rgb(46, 81, 126) solid;
+    border-top: 5px #0b6dc2 solid;
 }
 
 .TabHeader-Selected button{
-    color: rgb(46, 81, 126);
+    color: #0b6dc2;
 }
 

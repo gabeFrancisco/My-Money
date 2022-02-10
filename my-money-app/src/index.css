@@ -15,6 +15,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   animation: FadeIn 0.4s forwards;
+  font-size: 16px;
 }
 
 body::-webkit-scrollbar {
@@ -58,3 +59,4 @@ code {
   background: none;
   border: none
 }
+

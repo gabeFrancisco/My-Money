@@ -17,17 +17,18 @@
 }
 
 .Submenu ul li {
+  padding: 0;
+}
+.Submenu ul li a:hover{
+  background-color: #003869;;
+}
+.Submenu ul li a {
   font-size: 0.8rem;
   display: flex;
   flex-direction: column;
   padding: 10px;
   align-items: baseline;
   white-space: nowrap;
-}
-.Submenu ul li:hover{
-  background-color: #003869;;
-}
-.Submenu ul li a {
   color: #fff;
   text-decoration: none;
 }

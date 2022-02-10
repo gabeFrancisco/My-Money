@@ -4,9 +4,16 @@ import TabHeader from "../widgets/Tabs/TabHeader";
 import Tabs from "../widgets/Tabs/Tabs";
 import TabsContent from "../widgets/Tabs/TabsContent";
 import TabsHeader from "../widgets/Tabs/TabsHeader";
+import BillingCycleList from "../components/BillingCycleList";
 
+import { connect } from 'react-redux'
+import { getList } from '../store/actions/billingCycleActions'
+import { useEffect } from "react";
+import BillingCycleForm from "../components/BillingCycleForm";
 
 function BillingCycle(props) {  
+  useEffect(() => (props.fetchData()), [])
+
   return (
     <div className="fadeIn">
       <SectionTitle
@@ -23,8 +30,12 @@ function BillingCycle(props) {
             <TabHeader title="Excluir" icon="fas fa-trash" target={4}></TabHeader>
           </TabsHeader>
           <TabsContent>
-            <TabContent content="Listar ciclos!" target={1}></TabContent>
-            <TabContent content="Adicionar ciclo" target={2}></TabContent>
+            <TabContent target={1}>
+              <BillingCycleList/>
+            </TabContent>
+            <TabContent target={2}>
+              <BillingCycleForm/>
+            </TabContent>
           </TabsContent>
         </Tabs>
       </div>
@@ -32,4 +43,18 @@ function BillingCycle(props) {
   );
 }
 
-export default BillingCycle;
+function mapStateToProps(state){
+  return{
+    list: state.billingCycles.list
+  }
+}
+
+function mapDispatchToProps(dispatch){
+  return{
+    fetchData(){
+      dispatch(getList())
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(BillingCycle);

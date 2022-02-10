@@ -7,7 +7,7 @@ function Header(props){
     <header className="main-header">
       <a href="/#/" className="Logo">
         <i class="far fa-money-bill-alt"></i>
-        <span>My Money</span>
+        <span><b>My</b> Money</span>
       </a>
     </header>
   );

@@ -5,13 +5,7 @@ import { connect } from "react-redux";
 function TabContent(props) {
   const selected = props.tabId === props.target;
 
-  return (
-    selected && (
-      <div>
-        <h1>{props.content}</h1>
-      </div>
-    )
-  );
+  return selected && <div>{props.children}</div>;
 }
 
 function mapStateToProps(state) {

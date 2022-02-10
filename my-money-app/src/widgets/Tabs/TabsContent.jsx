@@ -2,7 +2,7 @@ import React from 'react'
 
 function TabsContent(props){
   return(
-    <div>
+    <div className="fadeIn">
       {props.children}
     </div>
   )

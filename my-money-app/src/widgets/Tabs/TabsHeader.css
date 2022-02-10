@@ -4,4 +4,6 @@
     align-items: flex-start;
     padding: 0;
     border-bottom: 1px solid #ccc;
+    background-color: rgb(245, 245, 245);
+    margin: 0;
 }
