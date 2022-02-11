@@ -5,14 +5,15 @@ import Tabs from "../widgets/Tabs/Tabs";
 import TabsContent from "../widgets/Tabs/TabsContent";
 import TabsHeader from "../widgets/Tabs/TabsHeader";
 import List from "../widgets/BillingCycle/List";
+import Create from "../widgets/BillingCycle/Create";
+import Column from "../components/Column";
 
 import { connect } from 'react-redux'
 import { getList } from '../store/actions/billingCycleActions'
 import { useEffect } from "react";
-import Create from "../widgets/BillingCycle/Create";
-import Column from "../components/Column";
 
 function BillingCycle(props) {  
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => (props.fetchData()), [])
 
   return (

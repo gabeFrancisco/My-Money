@@ -1,11 +1,12 @@
-const INITIAL_STATE = {tabIndex: 1}
+const INITIAL_STATE = {messageList: []}
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default function(state = INITIAL_STATE, action){
   switch(action.type){
-    case 'TAB_SETTED':
-      return{...state, tabIndex: action.payload}
+    case 'ADD_NOTIFICATION':
+      return{...state, messageList: state.messageList.concat(action.payload)}
     default:
       return state
   }
 }
+

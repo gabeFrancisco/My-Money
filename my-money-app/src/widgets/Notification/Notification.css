@@ -1,0 +1,41 @@
+@keyframes Fade {
+  0% {
+    opacity: 0%;
+  }
+  25% {
+    opacity: 100%;
+  }
+
+  80% {
+    opacity: 100%;
+  }
+  100% {
+    opacity: 0%;
+  }
+}
+
+.Notification {
+  display: block;
+  position: absolute;
+  width: 30vw;
+  height: 15vh;
+  right: 2px;
+  margin: 15px;
+  padding: 15px;
+  border-radius: 5px;
+  color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  animation: Fade 6s forwards;
+}
+
+.Notification-Success {
+  background: linear-gradient(to top, #16a084ec, #1abc9cf1);
+}
+
+.Notification-Warning {
+  background: linear-gradient(to top, #b19b46, #d1b648);
+}
+
+.Notification-Danger {
+    background: linear-gradient(to top, #e74c3c, #c0392b);
+  }

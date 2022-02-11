@@ -15,7 +15,6 @@
     list-style-type: none;
     border-right: 1px solid #ccc;
     padding: 7px 15px 7px 15px;
-    border-top-right-radius: 8px;
 }
 
 .TabHeader:hover{
@@ -42,7 +41,6 @@
     padding: 7px 15px 7px 15px;
     animation: TabAnimSelected 0.7s;
     border-top: 5px #0048a7 solid;
-    border-top-right-radius: 8px;
 }
 
 .TabHeader-Selected button{

@@ -5,8 +5,12 @@ import { getList } from "../../store/actions/billingCycleActions";
 import ListItem from "./ListItem";
 
 function List(props) {
+
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(() => props.fetchData(), [props.billingCycles]);
+  useEffect(() => {
+    props.fetchData();
+
+  }, [props, props.billingCycles]);
 
   return (
     <div>
@@ -28,7 +32,7 @@ function List(props) {
                 year={el.year}
               />
             );
-          })}
+          }).reverse()}
         </tbody>
       </table>
     </div>

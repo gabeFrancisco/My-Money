@@ -51,7 +51,6 @@
 
 .Collapsable-Area {
   display: flex;
-  z-index: 99;
 }
 
 .Collapsable-Area .Logo-Wrapper{
@@ -59,6 +58,30 @@
   white-space: nowrap;
 }
 
+
+.Collapsable-Area .Logo {
+  font-size: 0.8rem;
+  display: flex;
+  flex-direction: ro;
+  padding: 10px;
+  align-items: baseline;
+  white-space: nowrap;
+  color: #fff;
+  text-decoration: none;
+  margin: 15px;
+  text-decoration: none;
+  color: #fff;
+  font-size: 1.5rem;
+}
+
+.Collapsable-Area .Logo:hover{
+  text-decoration: none;
+  color: #ddd;
+}
+
+.Logo i{
+  margin-right: 10px;
+}
 
 .Collapse-Close {
   animation: MenuCollapseClose 0.5s forwards;
@@ -69,7 +92,7 @@
 }
 
 .Sidebar {
-  background: linear-gradient(to bottom, #0b63b1, #00294d) repeat;
+  background: linear-gradient(to bottom, #025195, #2a6fac) repeat;
   color: #fff;
   overflow: hidden;
   height: 100vh;

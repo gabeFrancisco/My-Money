@@ -5,7 +5,7 @@ import Submenu from "./Submenu";
 
 import { Link } from "react-router-dom";
 
-function Sidebar(props) {
+function Sidebar() {
   const [sidebarCollapse, setSidebarCollapse] = useState(true);
   const [sidebarStyle, setSidebarStyle] = useState("Collapse-Open");
 
@@ -31,13 +31,12 @@ function Sidebar(props) {
     <div className="Collapsable-Area">
       <nav className={`Sidebar ${sidebarStyle}`}>
         <div className="Logo-Wrapper">
-
-        <Link to="/" className="Logo">
-          <i class="far fa-money-bill-alt"></i>
-          <span>
-            <b>My</b> Money
-          </span>
-        </Link>
+          <Link to="/" className="Logo">
+            <i class="far fa-money-bill-alt"></i>
+            <span>
+              <b>My</b> Money
+            </span>
+          </Link>
         </div>
         <ul>
           <li>

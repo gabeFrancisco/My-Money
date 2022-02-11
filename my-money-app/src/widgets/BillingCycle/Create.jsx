@@ -1,10 +1,10 @@
-import React from "react";
-
 import { useForm } from "react-hook-form";
 
 import { connect } from "react-redux";
+
 import { create } from "../../store/actions/billingCycleActions";
 import { setTab } from "../../store/actions/tabsActions";
+import { addNotification } from "../../store/actions/notificationActions";
 
 import FormValidation from "../Validation/FormValidation";
 
@@ -14,9 +14,19 @@ function Create(props) {
     formState: { errors },
     handleSubmit,
   } = useForm();
+
   const onSubmit = (data) => {
     props.createData(data);
-    props.selectTab(1)
+    props.selectTab(1);
+
+    props.setNotification({
+      message: {
+        alert: "Success",
+        title: "Ciclo criado com sucesso!",
+        message: `O ciclo ${data.name} de ${data.month}/${data.year} foi adicionado!`,
+      },
+    });
+    console.log(props.getNotificationMessage());
   };
 
   return (
@@ -31,7 +41,9 @@ function Create(props) {
             placeholder="Janeiro"
             {...register("name", { required: true })}
           />
-          {errors.name && <FormValidation message="Nome não pode estar vazio!" />}
+          {errors.name && (
+            <FormValidation message="Nome não pode estar vazio!" />
+          )}
         </div>
         <div className="col">
           <label>Mês</label>
@@ -59,7 +71,9 @@ function Create(props) {
             placeholder={new Date().getFullYear()}
             {...register("year", { required: true })}
           />
-          {errors.year && <FormValidation message="Ano não pode estar vazio!" />}
+          {errors.year && (
+            <FormValidation message="Ano não pode estar vazio!" />
+          )}
         </div>
       </div>
       <div className="form-row d-flex d-inline justify-content-center mt-4">
@@ -78,6 +92,9 @@ function mapDispatchToProps(dispatch) {
     },
     selectTab(tab) {
       dispatch(setTab(tab));
+    },
+    setNotification(notification) {
+      dispatch(addNotification(notification));
     },
   };
 }

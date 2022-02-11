@@ -1,0 +1,11 @@
+@keyframes NewItemAnim{
+    0%{
+        background-color: #31d17b;
+        color: rgb(209, 209, 209);
+    }
+    100%{
+        background-color: inherit;
+        color: inherit;
+    }
+}
+
