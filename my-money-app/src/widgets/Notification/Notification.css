@@ -11,21 +11,21 @@
 }
 
 .Notification-Success {
-  border: 3px #16a084ec solid;
+  border: 2px #16a084ec solid;
   color: #16a084ec;
 }
 
 .Notification-Info {
-  border: 3px #2980b9 solid;
-  color: #2980b9
+  border: 2px #2371a5 solid;
+  color: #156295
 }
 
 .Notification-Warning {
-  border: 3px #b19b46 solid;
+  border: 2px #b19b46 solid;
   color: #b19b46;
 }
 
 .Notification-Danger {
-  border: 3px #c0392b solid;
+  border: 2px #c0392b solid;
   color: #c0392b;
 }

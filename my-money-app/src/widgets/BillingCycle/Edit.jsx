@@ -3,7 +3,7 @@ import SectionTitle from "../../components/SectionTitle";
 
 import { useForm } from "react-hook-form";
 import { connect } from "react-redux";
-import { setEdit } from "../../store/actions/editTabActions";
+import { setEdit } from "../../store/actions/modalActions";
 import { useEffect, useMemo } from "react";
 import { update } from "../../store/actions/billingCycleActions";
 import { setTab } from "../../store/actions/tabsActions";
@@ -30,7 +30,6 @@ function Edit(props) {
 
   const onSubmit = (data) => {
     props.updateBillingCycle(data);
-    props.selectTab(1);
 
     props.setNotification({
       message: {
@@ -40,7 +39,7 @@ function Edit(props) {
       },
     });
 
-    props.setEditTab(false);
+    props.setEditModal(false);
   };
 
   if (props.billingCycle) {
@@ -102,7 +101,7 @@ function Edit(props) {
           </div>
           <div className="form-row d-flex d-inline justify-content-center mt-4">
             <button
-              onClick={() => props.setEditTab(false)}
+              onClick={() => props.setEditModal(false)}
               className="btn btn-danger pl-5 pr-5 mr-3"
               type="button"
             >
@@ -126,14 +125,11 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    setEditTab(value) {
+    setEditModal(value) {
       dispatch(setEdit(value));
     },
     updateBillingCycle(billingCycle) {
       dispatch(update(billingCycle));
-    },
-    selectTab(tab) {
-      dispatch(setTab(tab));
     },
     setNotification(message) {
       dispatch(addNotification(message));

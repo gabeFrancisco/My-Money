@@ -2,8 +2,8 @@ import { connect } from "react-redux";
 
 import "./ListItem.css";
 
-import { setEdit } from "../../store/actions/editTabActions";
-import { read } from '../../store/actions/billingCycleActions'
+import { setEdit, setRemove } from "../../store/actions/modalActions";
+import { read } from "../../store/actions/billingCycleActions";
 
 function ListItem(props) {
   return (
@@ -12,17 +12,22 @@ function ListItem(props) {
       <td>{props.month}</td>
       <td>{props.year}</td>
       <td>
-        <a
-          href="#edit"
+        <button
           onClick={() => {
-            props.readBillingCycle(props.index)
-            props.setEditTab(true)
+            props.readBillingCycle(props.index);
+            props.setEditModal(true);
           }}
           className="text-white btn btn-sm btn-warning mr-2"
         >
           <i className="fas fa-pen" />
-        </a>
-        <button className="text-white btn btn-sm btn-danger mr-2">
+        </button>
+        <button
+          onClick={() => {
+            props.readBillingCycle(props.index);
+            props.setRemoveModal(true);
+          }}
+          className="text-white btn btn-sm btn-danger mr-2"
+        >
           <i className="fas fa-trash" />
         </button>
       </td>
@@ -32,12 +37,15 @@ function ListItem(props) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    setEditTab(value) {
+    setEditModal(value) {
       dispatch(setEdit(value));
     },
-    readBillingCycle(id){
-      dispatch(read(id))
-    }
+    setRemoveModal(value) {
+      dispatch(setRemove(value));
+    },
+    readBillingCycle(id) {
+      dispatch(read(id));
+    },
   };
 }
 

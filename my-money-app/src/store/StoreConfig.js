@@ -7,14 +7,14 @@ import dashboardReducer from "./reducers/dashboardReducer";
 import tabReducer from "./reducers/tabsReducer";
 import billingCycleReducer from "./reducers/billingCycleReducer";
 import notificationReducer from "./reducers/notificationReducer";
-import editTabReducer from "./reducers/editTabReducer";
+import modalReducer from "./reducers/modalReducer";
 
 const reducers = combineReducers({
   dashboard: dashboardReducer,
   tabs: tabReducer,
   billingCycles: billingCycleReducer,
   notifications: notificationReducer,
-  editTab: editTabReducer
+  modal: modalReducer
 });
 
 

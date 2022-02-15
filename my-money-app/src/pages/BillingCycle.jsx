@@ -9,13 +9,14 @@ import Create from "../widgets/BillingCycle/Create";
 import Column from "../components/Column";
 import Edit from "../widgets/BillingCycle/Edit";
 import Rodal from "rodal";
+import Remove from "../widgets/BillingCycle/Remove";
 
 import "rodal/lib/rodal.css";
 
 import { connect } from "react-redux";
 import { getList } from "../store/actions/billingCycleActions";
 import { useEffect } from "react";
-import { setEdit } from "../store/actions/editTabActions";
+import { setEdit, setRemove } from "../store/actions/modalActions";
 
 function BillingCycle(props) {
   useEffect(() => {
@@ -42,8 +43,13 @@ function BillingCycle(props) {
           <TabsContent>
             <TabContent target={1}>
               {props.isEdit && (
-                <Rodal visible={props.isEdit} onClose={() => {props.setEditTab(false)}} width={600} height={400}>
+                <Rodal visible={props.isEdit} onClose={() => props.setEditModal(false)} width={600} height={400}>
                   <Edit />
+                </Rodal>
+              )}
+              {props.isRemove && (
+                <Rodal visible={props.isRemove} onClose={() => props.setRemoveModal(false)} width={600} height={210}>
+                  <Remove/>
                 </Rodal>
               )}
               <List />
@@ -61,7 +67,8 @@ function BillingCycle(props) {
 function mapStateToProps(state) {
   return {
     list: state.billingCycles.list,
-    isEdit: state.editTab.isEdited,
+    isEdit: state.modal.isEdit,
+    isRemove: state.modal.isRemove
   };
 }
 
@@ -70,9 +77,12 @@ function mapDispatchToProps(dispatch) {
     fetchData() {
       dispatch(getList());
     },
-    setEditTab(value) {
+    setEditModal(value) {
       dispatch(setEdit(value));
     },
+    setRemoveModal(value){
+      dispatch(setRemove(value))
+    }
   };
 }
 

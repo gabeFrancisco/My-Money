@@ -33,6 +33,13 @@ export function read(id) {
 export function update(billingCycle) {
   axios.put(`${BASE_URL}/billingCycles`, billingCycle);
   return {
-    type: 'BILLING_CYCLES_UPDATED',
+    type: "BILLING_CYCLES_UPDATED",
+  };
+}
+
+export function remove(id) {
+  axios.delete(`${BASE_URL}/billingCycles/${id}`);
+  return {
+    type: "BILLING_CYCLES_REMOVED",
   };
 }
