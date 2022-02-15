@@ -7,14 +7,23 @@ import TabsHeader from "../widgets/Tabs/TabsHeader";
 import List from "../widgets/BillingCycle/List";
 import Create from "../widgets/BillingCycle/Create";
 import Column from "../components/Column";
+import Edit from "../widgets/BillingCycle/Edit";
 
-import { connect } from 'react-redux'
-import { getList } from '../store/actions/billingCycleActions'
+import { connect } from "react-redux";
+import { getList } from "../store/actions/billingCycleActions";
 import { useEffect } from "react";
+import { setEdit } from "../store/actions/editTabActions";
 
-function BillingCycle(props) {  
+function BillingCycle(props) {
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(() => (props.fetchData()), [])
+  useEffect(() => {
+    props.fetchData();
+  }, []);
+
+  useEffect(
+    () => props.setEditTab && console.log(props.isEdit),
+    [props.isEdit]
+  );
 
   return (
     <div className="fadeIn">
@@ -23,19 +32,22 @@ function BillingCycle(props) {
         subtitle="Gerencie todos os ciclos aquie nesta sessão"
       />
       <Column>
-      <Tabs>
+        <Tabs>
           <TabsHeader>
             <TabHeader title="Listar" icon="fas fa-list" target={1}></TabHeader>
-            <TabHeader title="Incluir" icon="fas fa-plus" target={2}></TabHeader>
-            <TabHeader title="Alterar" icon="fas fa-pen" target={3}></TabHeader>
-            <TabHeader title="Excluir" icon="fas fa-trash" target={4}></TabHeader>
+            <TabHeader
+              title="Incluir"
+              icon="fas fa-plus"
+              target={2}
+            ></TabHeader>
           </TabsHeader>
           <TabsContent>
             <TabContent target={1}>
-              <List/>
+              {props.isEdit === true && <Edit />}
+              <List />
             </TabContent>
             <TabContent target={2}>
-              <Create/>
+              <Create />
             </TabContent>
           </TabsContent>
         </Tabs>
@@ -44,18 +56,22 @@ function BillingCycle(props) {
   );
 }
 
-function mapStateToProps(state){
-  return{
-    list: state.billingCycles.list
-  }
+function mapStateToProps(state) {
+  return {
+    list: state.billingCycles.list,
+    isEdit: state.editTab.isEdited,
+  };
 }
 
-function mapDispatchToProps(dispatch){
-  return{
-    fetchData(){
-      dispatch(getList())
-    }
-  }
+function mapDispatchToProps(dispatch) {
+  return {
+    fetchData() {
+      dispatch(getList());
+    },
+    setEditTab() {
+      dispatch(setEdit(true));
+    },
+  };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(BillingCycle);

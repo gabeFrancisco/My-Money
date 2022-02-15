@@ -62,7 +62,7 @@ function Sidebar() {
       </nav>
       <div className="Collapse-Trigger">
         <button onClick={() => changeCollapseSideBar()} id="collapse-button">
-          <i class="fas fa-arrows-alt-h"></i>
+          <i class="fas fa-angle-double-right"></i>
         </button>
       </div>
     </div>

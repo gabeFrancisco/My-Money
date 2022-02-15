@@ -2,10 +2,12 @@
 
 @keyframes TabAnimSelected{
     0%{
-        border-top: 5px rgb(166, 181, 199) solid;
+        transform: translateY(0px);
+        background-color: #306dbe;
     }
     100%{
-        border-top: 5px #0048a7 solid;
+        transform: translateY(-10px);
+        background-color: #306dbe;
     }
     
 }
@@ -18,7 +20,7 @@
 }
 
 .TabHeader:hover{
-    background-color: #0048a7;
+    background-color: #306dbe;
     cursor: pointer;
 }
 
@@ -39,11 +41,12 @@
     list-style-type: none;
     border-right: 1px solid #ccc;
     padding: 7px 15px 7px 15px;
-    animation: TabAnimSelected 0.7s;
-    border-top: 5px #0048a7 solid;
+    animation: TabAnimSelected 0.4s;
+    background-color: #306dbe;
+    transform: translateY(-10px);
 }
 
 .TabHeader-Selected button{
-    color: #0048a7;
+    color: #fff;
 }
 

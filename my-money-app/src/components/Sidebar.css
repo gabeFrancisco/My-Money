@@ -72,6 +72,7 @@
   text-decoration: none;
   color: #fff;
   font-size: 1.5rem;
+  justify-content: center;
 }
 
 .Collapsable-Area .Logo:hover{
@@ -152,11 +153,8 @@
 
 .Collapsable-Area #collapse-button {
   background: linear-gradient(to right, #adbecc, #b6d1e9);
-  padding: 13px;
-  border-top-left-radius: 50px;
-	border-bottom-left-radius: 50px;
-	border-top-right-radius: 20px;
-	border-bottom-right-radius: 20px;
+  padding: 7px 15px 7px 15px;
+ border-radius: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -170,4 +168,5 @@
 .Collapse-Trigger #collapse-button i {
   font-size: 1.2rem;
   color: #005aa7;
+  margin-left: 8px;
 }
