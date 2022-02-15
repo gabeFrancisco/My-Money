@@ -6,9 +6,10 @@ import Dashboard from "./pages/Dashboard";
 
 import "./App.css";
 import BillingCycle from "./pages/BillingCycle";
-import Notification from "./widgets/Notification/Notification";
+import NotificationPopup from "./widgets/Notification/NotificationPopup";
 
 import { connect } from "react-redux";
+import Notifications from "./pages/Notifications";
 
 function App(props) {
   useEffect(() => props.notifications && console.log(props.notifications), [props, props.notifications]);
@@ -21,11 +22,12 @@ function App(props) {
             <Routes>
               <Route path="/" element={<Dashboard />} />
               <Route path="/billingCycle" element={<BillingCycle />} />
+              <Route path="/notifications" element={<Notifications/>}/>
             </Routes>
           </div>
           {props.notifications &&
             props.notifications.map((el) => (
-              <Notification
+              <NotificationPopup
                 alert={el.message.alert}
                 title={el.message.title}
                 message={el.message.message}

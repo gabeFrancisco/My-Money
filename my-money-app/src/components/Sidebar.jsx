@@ -58,6 +58,16 @@ function Sidebar() {
             </div>
             {submenuCollapse && <Submenu />}
           </li>
+          <li>
+            <Link to="/notifications" className="Menu-Item">
+              <div className="Menu-Item">
+                <div className="group">
+                  <i class="fas fa-comment-alt"></i>
+                  Notifications
+                </div>
+              </div>
+            </Link>
+          </li>
         </ul>
       </nav>
       <div className="Collapse-Trigger">
