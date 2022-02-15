@@ -32,10 +32,15 @@
   background: linear-gradient(to top, #16a084ec, #1abc9cf1);
 }
 
+.Notification-Info{
+  background: linear-gradient(to top, #3498db, #2980b9);
+}
+
 .Notification-Warning {
   background: linear-gradient(to top, #b19b46, #d1b648);
 }
 
 .Notification-Danger {
-    background: linear-gradient(to top, #e74c3c, #c0392b);
-  }
+  background: linear-gradient(to top, #e74c3c, #c0392b);
+}
+

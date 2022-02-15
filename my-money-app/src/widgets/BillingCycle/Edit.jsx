@@ -4,7 +4,10 @@ import SectionTitle from "../../components/SectionTitle";
 import { useForm } from "react-hook-form";
 import { connect } from "react-redux";
 import { setEdit } from "../../store/actions/editTabActions";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo } from "react";
+import { update } from "../../store/actions/billingCycleActions";
+import { setTab } from "../../store/actions/tabsActions";
+import { addNotification } from '../../store/actions/notificationActions'
 
 function Edit(props) {
   let billingCycle = props.billingCycle
@@ -22,19 +25,22 @@ function Edit(props) {
 
   useEffect(() => {
     reset(props.billingCycle)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.billingCycle])
 
   const onSubmit = (data) => {
-    props.createData(data);
+    props.updateBillingCycle(data);
     props.selectTab(1);
 
     props.setNotification({
       message: {
-        alert: "Success",
-        title: "Ciclo criado com sucesso!",
-        message: `O ciclo ${data.name} de ${data.month}/${data.year} foi adicionado!`,
+        alert: "Info",
+        title: "Ciclo atualizado com sucesso!",
+        message: `O ciclo ${data.name} de ${data.month}/${data.year} foi atualizado!`,
       },
     });
+
+    props.setEditTab(false)
   };
 
   if(props.billingCycle) {
@@ -123,6 +129,15 @@ function mapDispatchToProps(dispatch) {
     setEditTab(value) {
       dispatch(setEdit(value));
     },
+    updateBillingCycle(billingCycle){
+      dispatch(update(billingCycle))
+    },
+    selectTab(tab){
+      dispatch(setTab(tab))
+    },
+    setNotification(message){
+      dispatch(addNotification(message))
+    }
   };
 }
 

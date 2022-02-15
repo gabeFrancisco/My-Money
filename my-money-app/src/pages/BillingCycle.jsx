@@ -15,15 +15,10 @@ import { useEffect } from "react";
 import { setEdit } from "../store/actions/editTabActions";
 
 function BillingCycle(props) {
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     props.fetchData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  useEffect(
-    () => props.setEditTab && console.log(props.isEdit),
-    [props.isEdit]
-  );
 
   return (
     <div className="fadeIn">
@@ -43,7 +38,7 @@ function BillingCycle(props) {
           </TabsHeader>
           <TabsContent>
             <TabContent target={1}>
-              {props.isEdit === true && <Edit />}
+              {props.isEdit && <Edit />}
               <List />
             </TabContent>
             <TabContent target={2}>

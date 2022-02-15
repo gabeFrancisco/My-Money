@@ -9,6 +9,8 @@ export default function (state = INITIAL_STATE, action) {
       return { ...state };
     case "BILLING_CYCLES_READED":
       return { ...state, billingCycle: action.payload };
+    case "BILLING_CYCLES_UPDATED":
+      return{...state}
     default:
       return state;
   }

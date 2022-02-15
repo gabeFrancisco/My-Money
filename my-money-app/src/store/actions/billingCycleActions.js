@@ -1,5 +1,4 @@
 import axios from "axios";
-import { setEdit } from "./editTabActions";
 const BASE_URL = "https://localhost:5001/api";
 
 export function getList() {
@@ -13,8 +12,8 @@ export function getList() {
   };
 }
 
-export function create(values) {
-  axios.post(`${BASE_URL}/billingCycles`, values);
+export function create(billingCycle) {
+  axios.post(`${BASE_URL}/billingCycles`, billingCycle);
   return {
     type: "BILLING_CYCLES_CREATED",
   };
@@ -22,13 +21,18 @@ export function create(values) {
 
 export function read(id) {
   return (dispatch) => {
-    return axios
-      .get(`${BASE_URL}/billingCycles/${id}`)
-      .then((res) =>
-        dispatch({
-          type: "BILLING_CYCLES_READED",
-          payload: res.data,
-        })
-      )
+    return axios.get(`${BASE_URL}/billingCycles/${id}`).then((res) =>
+      dispatch({
+        type: "BILLING_CYCLES_READED",
+        payload: res.data,
+      })
+    );
+  };
+}
+
+export function update(billingCycle) {
+  axios.put(`${BASE_URL}/billingCycles`, billingCycle);
+  return {
+    type: 'BILLING_CYCLES_UPDATED',
   };
 }
