@@ -16,9 +16,8 @@
 
 .NotificationPopup {
   display: block;
-  position: absolute;
+  position: fixed;
   width: 30vw;
-  height: 15vh;
   right: 2px;
   margin: 15px;
   padding: 15px;

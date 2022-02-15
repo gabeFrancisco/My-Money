@@ -11,17 +11,21 @@
 }
 
 .Notification-Success {
-  background: linear-gradient(to top, #16a084ec, #1abc9cf1);
+  border: 3px #16a084ec solid;
+  color: #16a084ec;
 }
 
 .Notification-Info {
-  background: linear-gradient(to top, #3498db, #2980b9);
+  border: 3px #2980b9 solid;
+  color: #2980b9
 }
 
 .Notification-Warning {
-  background: linear-gradient(to top, #b19b46, #d1b648);
+  border: 3px #b19b46 solid;
+  color: #b19b46;
 }
 
 .Notification-Danger {
-  background: linear-gradient(to top, #e74c3c, #c0392b);
+  border: 3px #c0392b solid;
+  color: #c0392b;
 }

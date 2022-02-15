@@ -12,7 +12,7 @@ import { connect } from "react-redux";
 import Notifications from "./pages/Notifications";
 
 function App(props) {
-  useEffect(() => props.notifications && console.log(props.notifications), [props, props.notifications]);
+  useEffect(() => props.notifications, [props, props.notifications]);
   return (
     <div>
       <Router>

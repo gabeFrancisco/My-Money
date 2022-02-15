@@ -5,8 +5,8 @@ import './Notification.css'
 function Notification(props) {
   return (
     <div className={`Notification Notification-${props.alert}`}>
-      <h5>{props.title}</h5>
-      <p>{props.message}</p>
+      <h6>{props.title}</h6>
+      <span>{props.message}</span>
     </div>
   );
 }
