@@ -8,6 +8,9 @@ import List from "../widgets/BillingCycle/List";
 import Create from "../widgets/BillingCycle/Create";
 import Column from "../components/Column";
 import Edit from "../widgets/BillingCycle/Edit";
+import Rodal from "rodal";
+
+import "rodal/lib/rodal.css";
 
 import { connect } from "react-redux";
 import { getList } from "../store/actions/billingCycleActions";
@@ -17,7 +20,7 @@ import { setEdit } from "../store/actions/editTabActions";
 function BillingCycle(props) {
   useEffect(() => {
     props.fetchData();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -38,7 +41,11 @@ function BillingCycle(props) {
           </TabsHeader>
           <TabsContent>
             <TabContent target={1}>
-              {props.isEdit && <Edit />}
+              {props.isEdit && (
+                <Rodal visible={props.isEdit} onClose={() => {props.setEditTab(false)}} width={600} height={400}>
+                  <Edit />
+                </Rodal>
+              )}
               <List />
             </TabContent>
             <TabContent target={2}>
@@ -63,8 +70,8 @@ function mapDispatchToProps(dispatch) {
     fetchData() {
       dispatch(getList());
     },
-    setEditTab() {
-      dispatch(setEdit(true));
+    setEditTab(value) {
+      dispatch(setEdit(value));
     },
   };
 }

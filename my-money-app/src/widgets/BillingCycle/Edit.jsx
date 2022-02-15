@@ -7,26 +7,26 @@ import { setEdit } from "../../store/actions/editTabActions";
 import { useEffect, useMemo } from "react";
 import { update } from "../../store/actions/billingCycleActions";
 import { setTab } from "../../store/actions/tabsActions";
-import { addNotification } from '../../store/actions/notificationActions'
+import { addNotification } from "../../store/actions/notificationActions";
 
 function Edit(props) {
-  let billingCycle = props.billingCycle
+  let billingCycle = props.billingCycle;
 
   const {
     register,
     formState: { errors },
     handleSubmit,
-    reset
+    reset,
   } = useForm({
     defaultValues: useMemo(() => {
-      return props.billingCycle
-    }, [props])
+      return props.billingCycle;
+    }, [props]),
   });
 
   useEffect(() => {
-    reset(props.billingCycle)
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [props.billingCycle])
+    reset(props.billingCycle);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [props.billingCycle]);
 
   const onSubmit = (data) => {
     props.updateBillingCycle(data);
@@ -40,16 +40,18 @@ function Edit(props) {
       },
     });
 
-    props.setEditTab(false)
+    props.setEditTab(false);
   };
 
-  if(props.billingCycle) {
+  if (props.billingCycle) {
     return (
       <div className="fadeIn" id="edit">
         <SectionTitle title="Atualizar Ciclo" />
-        <form className="m-4 border p-4" onSubmit={handleSubmit(onSubmit)}>
-          <div className="form-row">
-            <div className="col">
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+        >
+          <div className="">
+            <div>
               <label>Nome do ciclo</label>
               <input
                 name="name"
@@ -58,14 +60,13 @@ function Edit(props) {
                 placeholder="Janeiro"
                 {...register("name", {
                   required: true,
-                  value: billingCycle.name
+                  value: billingCycle.name,
                 })}
               />
               {errors.name && (
                 <FormValidation message="Nome não pode estar vazio!" />
               )}
-            </div>
-            <div className="col">
+
               <label>Mês</label>
               <input
                 name="month"
@@ -81,8 +82,7 @@ function Edit(props) {
               {errors.month && (
                 <FormValidation message="Mês precisa ser entre 1 e 12!" />
               )}
-            </div>
-            <div className="col">
+
               <label>Ano</label>
               <input
                 name="year"
@@ -129,15 +129,15 @@ function mapDispatchToProps(dispatch) {
     setEditTab(value) {
       dispatch(setEdit(value));
     },
-    updateBillingCycle(billingCycle){
-      dispatch(update(billingCycle))
+    updateBillingCycle(billingCycle) {
+      dispatch(update(billingCycle));
     },
-    selectTab(tab){
-      dispatch(setTab(tab))
+    selectTab(tab) {
+      dispatch(setTab(tab));
     },
-    setNotification(message){
-      dispatch(addNotification(message))
-    }
+    setNotification(message) {
+      dispatch(addNotification(message));
+    },
   };
 }
 
