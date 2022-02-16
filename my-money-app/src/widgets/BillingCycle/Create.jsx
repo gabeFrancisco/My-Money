@@ -23,8 +23,9 @@ function Create(props) {
     props.setNotification({
       message: {
         alert: "Success",
-        title: "Ciclo criado com sucesso!",
+        title: "Ciclo criado",
         message: `O ciclo ${data.name} de ${data.month}/${data.year} foi adicionado!`,
+        icon: 'plus'
       },
     });
     console.log(props.getNotificationMessage());

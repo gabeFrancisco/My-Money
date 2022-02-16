@@ -17,7 +17,7 @@ function ListItem(props) {
             props.readBillingCycle(props.index);
             props.setEditModal(true);
           }}
-          className="text-white btn btn-sm btn-warning mr-2"
+          className="text-white btn btn-sm btn-primary mr-2"
         >
           <i className="fas fa-pen" />
         </button>

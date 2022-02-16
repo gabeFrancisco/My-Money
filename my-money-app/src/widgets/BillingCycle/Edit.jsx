@@ -34,8 +34,9 @@ function Edit(props) {
     props.setNotification({
       message: {
         alert: "Info",
-        title: "Ciclo atualizado com sucesso!",
+        title: "Ciclo atualizado",
         message: `O ciclo ${data.name} de ${data.month}/${data.year} foi atualizado!`,
+        icon: 'pen'
       },
     });
 

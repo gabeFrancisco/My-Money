@@ -27,6 +27,17 @@
   animation: Fade 6s forwards;
 }
 
+.Notification-Area{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.Notification-Area div i{
+  font-size: 1.7rem;
+  margin-left: 10px;
+}
+
 .NotificationPopup-Success {
   background: linear-gradient(to top, #16a084ec, #1abc9cf1);
 }

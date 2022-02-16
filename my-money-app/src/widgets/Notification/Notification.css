@@ -1,31 +1,34 @@
 .Notification {
   display: flex;
-  flex-direction: column;
-  width: 100%vw;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   right: 2px;
   margin: 15px;
-  padding: 15px;
+  padding: 10px;
   border-radius: 5px;
   color: #fff;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .Notification-Success {
-  border: 2px #16a084ec solid;
-  color: #16a084ec;
+  background-color: #16a084ec;
 }
 
 .Notification-Info {
-  border: 2px #2371a5 solid;
-  color: #156295
+  background-color: #156295;
 }
 
 .Notification-Warning {
-  border: 2px #b19b46 solid;
-  color: #b19b46;
+  background-color: #b19b46;
 }
 
 .Notification-Danger {
-  border: 2px #c0392b solid;
-  color: #c0392b;
+  background-color: #c0392b;
+}
+
+.Notification i{
+  position: relative;
+  display: inline;
+  float: left;
 }

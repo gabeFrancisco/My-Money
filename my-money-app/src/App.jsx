@@ -31,6 +31,7 @@ function App(props) {
                 alert={el.message.alert}
                 title={el.message.title}
                 message={el.message.message}
+                icon={el.message.icon}
               />
             ))}
         </div>

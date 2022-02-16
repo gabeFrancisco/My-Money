@@ -13,15 +13,18 @@ function Notifications(props) {
         subtitle="Visualize aqui as suas ultimas notificações."
       />
       {props.notifications &&
-        props.notifications.map((el) => {
-          return (
-            <Notification
-              alert={el.message.alert}
-              title={el.message.title}
-              message={el.message.message}
-            />
-          );
-        })}
+        props.notifications
+          .map((el) => {
+            return (
+              <Notification
+                alert={el.message.alert}
+                title={el.message.title}
+                message={el.message.message}
+                icon={el.message.icon}
+              />
+            );
+          })
+          .reverse()}
     </div>
   );
 }

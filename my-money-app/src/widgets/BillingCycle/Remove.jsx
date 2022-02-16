@@ -13,8 +13,9 @@ function Remove(props) {
     props.setNotification({
       message: {
         alert: "Danger",
-        title: "Ciclo removido com sucesso!",
+        title: "Ciclo removido",
         message: `O ciclo ${props.billingCycle.name} de ${props.billingCycle.month}/${props.billingCycle.year} foi removido!`,
+        icon: 'trash'
       },
     });
 
@@ -29,7 +30,7 @@ function Remove(props) {
       />
       <div className="form-row d-flex d-inline justify-content-center mt-4">
         <button
-          className="btn btn-outline-secondary pl-5 pr-5 mr-3"
+          className="btn btn-outline-dark pl-5 pr-5 mr-3"
           type="button"
           onClick={() => props.setRemoveModal(false)}
         >
