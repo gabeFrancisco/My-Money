@@ -1,12 +1,13 @@
 import FormValidation from "../Validation/FormValidation";
 import SectionTitle from "../../components/SectionTitle";
+import Credits from "../Credits/Credits";
+import Debts from "../Debts/Debts";
 
 import { useForm } from "react-hook-form";
 import { connect } from "react-redux";
 import { setEdit } from "../../store/actions/modalActions";
 import { useEffect, useMemo } from "react";
 import { update } from "../../store/actions/billingCycleActions";
-import { setTab } from "../../store/actions/tabsActions";
 import { addNotification } from "../../store/actions/notificationActions";
 
 function Edit(props) {
@@ -36,7 +37,7 @@ function Edit(props) {
         alert: "Info",
         title: "Ciclo atualizado",
         message: `O ciclo ${data.name} de ${data.month}/${data.year} foi atualizado!`,
-        icon: 'pen'
+        icon: "pen",
       },
     });
 
@@ -47,11 +48,9 @@ function Edit(props) {
     return (
       <div className="fadeIn" id="edit">
         <SectionTitle title="Atualizar Ciclo" />
-        <form
-          onSubmit={handleSubmit(onSubmit)}
-        >
-          <div className="">
-            <div>
+        <form className="p-2" onSubmit={handleSubmit(onSubmit)}>
+          <div className="form-row">
+            <div className="col">
               <label>Nome do ciclo</label>
               <input
                 name="name"
@@ -66,7 +65,8 @@ function Edit(props) {
               {errors.name && (
                 <FormValidation message="Nome não pode estar vazio!" />
               )}
-
+            </div>
+            <div className="col">
               <label>Mês</label>
               <input
                 name="month"
@@ -82,7 +82,8 @@ function Edit(props) {
               {errors.month && (
                 <FormValidation message="Mês precisa ser entre 1 e 12!" />
               )}
-
+            </div>
+            <div className="col">
               <label>Ano</label>
               <input
                 name="year"
@@ -100,15 +101,19 @@ function Edit(props) {
               )}
             </div>
           </div>
+          <div className="cd-row">
+            <Credits />
+            <Debts />
+          </div>
           <div className="form-row d-flex d-inline justify-content-center mt-4">
             <button
               onClick={() => props.setEditModal(false)}
-              className="btn btn-danger pl-5 pr-5 mr-3"
+              className="btn btn-outline-dark pl-5 pr-5 mr-3"
               type="button"
             >
               Cancelar
             </button>
-            <button className="btn btn-success pl-5 pr-5" type="submit">
+            <button className="btn btn-primary pl-5 pr-5" type="submit">
               Atualizar ciclo!
             </button>
           </div>

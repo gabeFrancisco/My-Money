@@ -14,7 +14,7 @@ function Field(){
           <label>Valor</label>
           <input className="form-control form-control-sm" type="text"/>
         </div>
-        <div className="form-row align-items-center col-sm-1 col-auto">
+        <div className="form-row align-items-center col-sm-1 col-auto mr-2">
           <button className="btn btn-sm btn-success">
             <i className="fas fa-plus"></i>
           </button>

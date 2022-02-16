@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 
-import SectionTitle from "../../components/SectionTitle";
 import ListItem from "./ListItem";
 
 import { getList } from "../../store/actions/billingCycleActions";
 import { connect } from "react-redux";
+import { setCreate } from "../../store/actions/modalActions";
 
 function List(props) {
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -14,8 +14,16 @@ function List(props) {
 
   return (
     <div>
-      <SectionTitle title="Ciclos" />
-      <table className="table table-hover ">
+      <div className="mb-3 d-flex justify-content-lg-start">
+        <button
+          className="btn btn-success"
+          onClick={() => props.setCreateModal(true)}
+        >
+          <i className="fas fa-plus m-1"></i>
+          Novo ciclo!
+        </button>
+      </div>
+      <table className="table table-hover border ">
         <thead className="border">
           <tr>
             <th>Nome</th>
@@ -53,6 +61,9 @@ function mapDispatchToProps(dispatch) {
   return {
     fetchData() {
       dispatch(getList());
+    },
+    setCreateModal(value) {
+      dispatch(setCreate(value));
     },
   };
 }

@@ -1,3 +1,10 @@
+export function setCreate(isCreate){
+  return{
+    type: 'CREATE_MODAL',
+    payload: isCreate
+  }
+}
+
 export function setEdit(isEdit){
   return{
     type: 'EDIT_MODAL',

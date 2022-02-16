@@ -81,3 +81,9 @@ code {
   border: none
 }
 
+.cd-row{
+  display: flex;
+  flex-direction: row;
+  margin-top: 1rem;
+}
+
