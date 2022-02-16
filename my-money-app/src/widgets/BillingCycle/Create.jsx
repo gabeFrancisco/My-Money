@@ -1,5 +1,7 @@
 import { useForm } from "react-hook-form";
 
+import './Create.css'
+
 import { connect } from "react-redux";
 
 import { create } from "../../store/actions/billingCycleActions";
@@ -8,6 +10,8 @@ import { addNotification } from "../../store/actions/notificationActions";
 
 import FormValidation from "../Validation/FormValidation";
 import SectionTitle from "../../components/SectionTitle";
+import Credits from "../Credits/Credits";
+import Debts from "../Credits/Debts";
 
 function Create(props) {
   const {
@@ -34,7 +38,7 @@ function Create(props) {
   return (
     <div>
       <SectionTitle title="Incluir" />
-      <form className="m-4 border p-4" onSubmit={handleSubmit(onSubmit)}>
+      <form className="m-4 border rounded p-4" onSubmit={handleSubmit(onSubmit)}>
         <div className="form-row">
           <div className="col">
             <label>Nome do ciclo</label>
@@ -80,7 +84,10 @@ function Create(props) {
             )}
           </div>
         </div>
-        <hr/>
+        <div className="Cd-row">
+          <Credits/>
+          <Debts/>
+        </div>
         <div className="form-row d-flex d-inline justify-content-center mt-4">
           <button className="btn btn-success pl-5 pr-5" type="submit">
             Novo ciclo!

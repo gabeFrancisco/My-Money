@@ -43,7 +43,11 @@ namespace MyMoney.Api.Services
         public async Task<bool> Delete(int id)
         {
             var result = await _context.BillingCycles
-                .SingleOrDefaultAsync(x => x.Id == id);
+                .Where(x => x.Id == id)
+                .Include(x => x.Credits)
+                .Include(x => x.Debts)
+                .AsSplitQuery()
+                .SingleOrDefaultAsync();
 
             if (result == null)
                 return false;
@@ -63,6 +67,7 @@ namespace MyMoney.Api.Services
             return await _context.BillingCycles
                 .Include(x => x.Credits)
                 .Include(x => x.Debts)
+                .AsSplitQuery()
                 .ToListAsync();
         }
 
@@ -77,6 +82,7 @@ namespace MyMoney.Api.Services
                 .Where(x => x.Id == id)
                 .Include(x => x.Credits)
                 .Include(x => x.Debts)
+                .AsSplitQuery()
                 .SingleOrDefaultAsync();
         }
 
@@ -90,6 +96,7 @@ namespace MyMoney.Api.Services
                 .Where(x => x.Id == billingCycleId)
                 .Include(x => x.Credits)
                 .Include(x => x.Debts)
+                .AsSplitQuery()
                 .SingleOrDefaultAsync();
 
             var summary = new Summary

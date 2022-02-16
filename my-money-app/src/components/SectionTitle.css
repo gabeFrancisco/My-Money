@@ -1,6 +1,10 @@
 .SectionTitle{
     flex-grow: 1;
-    color: #0048a7;
+    color: #333;
     width: 100;
     overflow: hidden;
+}
+
+.SectionTitle h3{
+    margin-bottom: 1rem;
 }

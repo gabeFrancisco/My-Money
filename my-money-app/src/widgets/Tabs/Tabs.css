@@ -1,6 +1,8 @@
 .Tabs{
     background-color: rgb(246, 246, 246);
     border: 1px solid #ddd;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
     width: 100;
     block-size: fit-content;
 }
