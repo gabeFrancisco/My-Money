@@ -1,15 +1,25 @@
-import React from 'react'
-import Field from '../Field/Field'
+import React from "react";
+import Field from "../Field/Field";
 
-import './Credits.css'
+import { connect } from "react-redux";
 
-function Credits(props){
-  return(
+import "./Credits.css";
+
+function Credits(props) {
+  return (
     <div className="Credits ">
       <h5 className="text-success mt-2">Creditos</h5>
-      <Field/>
+      {props.credits &&
+        props.credits.map((el) => <Field name={el.name} value={el.value} readOnly={true} fetched={true} />)}
+        <Field/>
     </div>
-  )
+  );
 }
 
-export default Credits
+function mapStateToProps(state) {
+  return {
+    credits: state.billingCycles.billingCycle.credits,
+  };
+}
+
+export default connect(mapStateToProps)(Credits);

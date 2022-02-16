@@ -59,7 +59,6 @@ function Edit(props) {
                 placeholder="Janeiro"
                 {...register("name", {
                   required: true,
-                  value: billingCycle.name,
                 })}
               />
               {errors.name && (

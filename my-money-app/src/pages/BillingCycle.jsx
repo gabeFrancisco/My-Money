@@ -32,7 +32,7 @@ function BillingCycle(props) {
             onClose={() => props.setCreateModal(false)}
             customStyles={{
               width: "80vw",
-              height: "70vh",
+              height: "85vh",
               backgroundColor: "#f7f7f7",
               borderRadius: '10px'
             }}
@@ -46,7 +46,7 @@ function BillingCycle(props) {
             onClose={() => props.setEditModal(false)}
             customStyles={{
               width: "80vw",
-              height: "70vh",
+              height: "85vh",
               backgroundColor: "#f7f7f7",
               borderRadius: '10px'
             }}

@@ -1,19 +1,9 @@
-@keyframes BorderAnim {
-  0% {
-		border-left: 0px #005aa8 solid;
-  }
-	100%{
-		border-left: 7px #005aa8 solid;
-	}
-}
-
 .SectionTitle {
   flex-grow: 1;
-  color: #025195;
+  color: #2a2a2a;
   width: 100;
   padding: 10px;
   border-radius: 10px;
-	animation: BorderAnim 0.7s forwards;
 }
 
 .SectionTitle h3 {
