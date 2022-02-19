@@ -90,26 +90,28 @@ namespace MyMoney.Api.Services
         /// Returns each sum of credits and debits
         /// </summary>
         /// <returns></returns>
-        public async Task<Summary> Summary(int billingCycleId)
+        public Summary Summary()
         {
-            var billingCycle = await _context.BillingCycles
-                .Where(x => x.Id == billingCycleId)
-                .Include(x => x.Credits)
-                .Include(x => x.Debts)
-                .AsSplitQuery()
-                .SingleOrDefaultAsync();
-
-            var summary = new Summary
+            var summary = new Summary();
+            if (_context.BillingCycles.Count() != 0)
             {
-                Credits = billingCycle.Credits
-                    .Select(x => x.Value)
-                    .Sum(),
-
-                Debts = billingCycle.Debts
-                    .Select(x => x.Value)
-                    .Sum()
-            };
-
+                foreach (var billingCycleInstance in _context.BillingCycles)
+                {
+                    if (billingCycleInstance.Credits != null)
+                    {
+                        summary.Credits += billingCycleInstance.Credits
+                            .Select(x => x.Value)
+                            .Sum();
+                    }
+                    if (billingCycleInstance.Debts != null)
+                    {
+                        summary.Debts += billingCycleInstance.Debts
+                            .Select(x => x.Value)
+                            .Sum();
+                    }
+                }
+            }
+            System.Console.WriteLine(summary.Credits);
             return summary;
         }
 

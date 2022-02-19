@@ -3,32 +3,12 @@ import SectionTitle from "../../components/SectionTitle";
 import Credits from "../Credits/Credits";
 import Debts from "../Debts/Debts";
 
-import { useForm } from "react-hook-form";
 import { connect } from "react-redux";
 import { setEdit } from "../../store/actions/modalActions";
-import { useEffect, useMemo } from "react";
 import { update } from "../../store/actions/billingCycleActions";
 import { addNotification } from "../../store/actions/notificationActions";
 
 function Edit(props) {
-  let billingCycle = props.billingCycle;
-
-  const {
-    register,
-    formState: { errors },
-    handleSubmit,
-    reset,
-  } = useForm({
-    defaultValues: useMemo(() => {
-      return props.billingCycle;
-    }, [props]),
-  });
-
-  useEffect(() => {
-    reset(props.billingCycle);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [props.billingCycle]);
-
   const onSubmit = (data) => {
     props.updateBillingCycle(data);
 
@@ -48,7 +28,7 @@ function Edit(props) {
     return (
       <div className="fadeIn" id="edit">
         <SectionTitle title="Atualizar Ciclo" />
-        <form className="p-2" onSubmit={handleSubmit(onSubmit)}>
+        <form className="p-2">
           <div className="form-row">
             <div className="col">
               <label>Nome do ciclo</label>
@@ -57,13 +37,12 @@ function Edit(props) {
                 type="text"
                 className="form-control"
                 placeholder="Janeiro"
-                {...register("name", {
-                  required: true,
-                })}
+               
+                
               />
-              {errors.name && (
+              {/* {errors.name && (
                 <FormValidation message="Nome não pode estar vazio!" />
-              )}
+              )} */}
             </div>
             <div className="col">
               <label>Mês</label>
@@ -74,13 +53,10 @@ function Edit(props) {
                 min="1"
                 max="12"
                 placeholder="1"
-                {...register("month", {
-                  required: true,
-                })}
               />
-              {errors.month && (
+              {/* {errors.month && (
                 <FormValidation message="Mês precisa ser entre 1 e 12!" />
-              )}
+              )} */}
             </div>
             <div className="col">
               <label>Ano</label>
@@ -91,13 +67,10 @@ function Edit(props) {
                 min="1960"
                 max="2099"
                 placeholder={new Date().getFullYear()}
-                {...register("year", {
-                  required: true,
-                })}
               />
-              {errors.year && (
+              {/* {errors.year && (
                 <FormValidation message="Ano não pode estar vazio!" />
-              )}
+              )} */}
             </div>
           </div>
           <div className="cd-row">

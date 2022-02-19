@@ -120,10 +120,10 @@ namespace MyMoney.Api.Controllers
         }
 
         [HttpGet]
-        [Route("summary", Name = "SummaryWithId")]
-        public async Task<IActionResult> Summary(int id)
+        [Route("summary")]
+        public IActionResult Summary(int id)
         {
-            return Ok(await _billingCycleService.Summary(id));
+            return Ok(_billingCycleService.Summary());
         }
     }
 }

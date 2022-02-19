@@ -8,9 +8,7 @@ import { setCreate } from "../../store/actions/modalActions";
 
 function List(props) {
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(() => {
-    props.fetchData();
-  }, [props, props.billingCycles]);
+  useEffect(() => props.fetchData(), [])
 
   return (
     <div>
@@ -33,7 +31,7 @@ function List(props) {
           </tr>
         </thead>
         <tbody>
-          {props.billingCycles
+          {props.billingCycles && props.billingCycles
             .map((el) => {
               return (
                 <ListItem

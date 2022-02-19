@@ -87,3 +87,8 @@ code {
   margin-top: 1rem;
 }
 
+.input-space{
+  display: flex;
+  flex-direction: column;
+}
+

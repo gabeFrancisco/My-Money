@@ -12,10 +12,18 @@ export function getList() {
   };
 }
 
+export function getBillingCycles(){
+  return{
+    type: 'GET_BILLING_CYCLES'
+  }
+}
+
 export function create(billingCycle) {
   axios.post(`${BASE_URL}/billingCycles`, billingCycle);
+  console.log(billingCycle)
   return {
     type: "BILLING_CYCLES_CREATED",
+    payload: billingCycle
   };
 }
 
@@ -24,7 +32,9 @@ export function read(id) {
     return axios.get(`${BASE_URL}/billingCycles/${id}`).then((res) =>
       dispatch({
         type: "BILLING_CYCLES_READED",
-        payload: res.data,
+        billingCycle: res.data,
+        credits: res.data.credits,
+        debts: res.data.debts
       })
     );
   };
@@ -42,4 +52,17 @@ export function remove(id) {
   return {
     type: "BILLING_CYCLES_REMOVED",
   };
+}
+
+export function addCredit(credit){
+  return{
+    type: 'CREDIT_ADDED',
+    payload: credit
+  }
+}
+
+export function returnState(){
+  return{
+    type: 'RETURN_STATE'
+  }
 }

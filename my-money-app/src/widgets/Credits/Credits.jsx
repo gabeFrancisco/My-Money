@@ -1,24 +1,30 @@
-import React from "react";
-import Field from "../Field/Field";
+import CreditField from "./CreditField";
 
-import { connect } from "react-redux";
+import { connect, useDispatch } from "react-redux";
 
 import "./Credits.css";
+import { useEffect } from "react";
+import { returnState } from "../../store/actions/billingCycleActions";
 
 function Credits(props) {
+  const dispatch = useDispatch();
+  useEffect(() => dispatch(returnState()), [props, props.credits]);
+
   return (
-    <div className="Credits ">
+    <div className="Credits">
       <h5 className="text-success mt-2">Creditos</h5>
       {props.credits &&
-        props.credits.map((el) => <Field name={el.name} value={el.value} readOnly={true} fetched={true} />)}
-        <Field/>
+        props.credits.map((el) => {
+          return <CreditField credit={el} readOnly={true} fetched={true} />;
+        })}
+      <CreditField />
     </div>
   );
 }
 
 function mapStateToProps(state) {
   return {
-    credits: state.billingCycles.billingCycle.credits,
+    credits: state.billingCycles.credits,
   };
 }
 

@@ -1,6 +1,4 @@
-import { useForm } from "react-hook-form";
-
-import { connect } from "react-redux";
+import { connect, useStore } from "react-redux";
 
 import { create } from "../../store/actions/billingCycleActions";
 import { addNotification } from "../../store/actions/notificationActions";
@@ -11,96 +9,132 @@ import Credits from "../Credits/Credits";
 import Debts from "../Debts/Debts";
 import { setCreate } from "../../store/actions/modalActions";
 
-function Create(props) {
-  const {
-    register,
-    formState: { errors },
-    handleSubmit,
-  } = useForm();
+import { useFormik } from "formik";
 
-  const onSubmit = (data) => {
-    props.createData(data);
-    props.setNotification({
-      message: {
-        alert: "Success",
-        title: "Ciclo criado",
-        message: `O ciclo ${data.name} de ${data.month}/${data.year} foi adicionado!`,
-        icon: "plus",
-      },
-    });
-    props.setCreateModal(false);
-  };
+import * as Yup from "yup";
+
+function Create(props) {
+  const formik = useFormik({
+    initialValues: {
+      name: "",
+      month: 0,
+      year: 0,
+    },
+    validationSchema: Yup.object({
+      name: Yup.string()
+        .max(50, "Nome não pode passar de 50 caracteres")
+        .required("Nome é obrigatório!"),
+      month: Yup.number()
+        .min(1, "Insira um mês de 1 a 12")
+        .max(12, "Insira um mês de 1 a 12")
+        .required("Mês é obrigatório"),
+      year: Yup.number()
+        .min(1960, "Insira um ano entre 1960 e 2099")
+        .max(2099, "Insira um ano entre 1960 e 2099")
+        .required("Ano é obrigatório"),
+    }),
+    onSubmit: (data) => {
+      data.credits = props.credits
+      data.debts = props.debts
+      props.createData(data);
+      props.setNotification({
+        message: {
+          alert: "Success",
+          title: "Ciclo criado",
+          message: `O ciclo ${data.name} de ${data.month}/${data.year} foi adicionado!`,
+          icon: "plus",
+        },
+      });
+      props.setCreateModal(false);
+    },
+  });
 
   return (
     <div>
-      <SectionTitle title="Incluir" />
-      <form className="p-2"
-        onSubmit={handleSubmit(onSubmit)}
-      >
-        <div className="form-row">
-          <div className="col">
-            <label>Nome do ciclo</label>
-            <input
-              name="name"
-              type="text"
-              className="form-control"
-              placeholder="Janeiro"
-              {...register("name", { required: true })}
-            />
-            {errors.name && (
-              <FormValidation message="Nome não pode estar vazio!" />
-            )}
+      <SectionTitle title="Novo ciclo"  />
+      <form className="p-2 input-space">
+        <div>
+          <div className="form-row">
+            <div className="col">
+              <label>Nome do ciclo</label>
+              <input
+                name="name"
+                type="text"
+                className="form-control"
+                placeholder="Janeiro"
+                values={formik.values.name}
+                onChange={formik.handleChange}
+              />
+              {formik.errors.name && (
+                <FormValidation message={formik.errors.name} />
+              )}
+            </div>
+            <div className="col">
+              <label>Mês</label>
+              <input
+                name="month"
+                className="form-control"
+                type="number"
+                min="1"
+                max="12"
+                placeholder="1"
+                values={formik.values.month}
+                onChange={formik.handleChange}
+              />
+              {formik.errors.month && (
+                <FormValidation message={formik.errors.month} />
+              )}
+            </div>
+            <div className="col">
+              <label>Ano</label>
+              <input
+                name="year"
+                className="form-control"
+                type="number"
+                min="1960"
+                max="2099"
+                placeholder={new Date().getFullYear()}
+                values={formik.values.year}
+                onChange={formik.handleChange}
+              />
+               {formik.errors.year && (
+                <FormValidation message={formik.errors.year} />
+              )}
+            </div>
           </div>
-          <div className="col">
-            <label>Mês</label>
-            <input
-              name="month"
-              className="form-control"
-              type="number"
-              min="1"
-              max="12"
-              placeholder="1"
-              {...register("month", { required: true })}
-            />
-            {errors.month && (
-              <FormValidation message="Mês precisa ser entre 1 e 12!" />
-            )}
-          </div>
-          <div className="col">
-            <label>Ano</label>
-            <input
-              name="year"
-              className="form-control"
-              type="number"
-              min="1960"
-              max="2099"
-              placeholder={new Date().getFullYear()}
-              {...register("year", { required: true })}
-            />
-            {errors.year && (
-              <FormValidation message="Ano não pode estar vazio!" />
-            )}
+          <div className="cd-row">
+            <Credits />
+            <Debts />
           </div>
         </div>
-        <div className="cd-row">
-          <Credits />
-          <Debts />
-        </div>
-        <div className="form-row d-flex d-inline justify-content-center mt-4">
-          <button
-            onClick={() => props.setCreateModal(false)}
-            className="btn btn-outline-secondary pl-5 pr-5 mr-3"
-            type="button"
-          >
-            Cancelar
-          </button>
-          <button className="btn btn-success pl-5 pr-5" type="submit">
-            Novo ciclo!
-          </button>
+        <div>
+          <div className="form-row d-flex d-inline justify-content-center mt-4">
+            <button
+              onClick={() => props.setCreateModal(false)}
+              className="btn btn-outline-dark pl-5 pr-5 mr-3"
+              type="button"
+            >
+              Cancelar
+            </button>
+            <button
+              className="btn btn-success pl-5 pr-5"
+              type="button"
+              onClick={formik.handleSubmit}
+            >
+              Novo ciclo!
+            </button>
+          </div>
         </div>
       </form>
     </div>
   );
+}
+
+function mapStateToProps(state){
+  return{
+    credits: state.billingCycles.credits,
+    debts: state.billingCycles.debts
+  }
 }
 
 function mapDispatchToProps(dispatch) {
@@ -117,4 +151,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(null, mapDispatchToProps)(Create);
+export default connect(mapStateToProps, mapDispatchToProps)(Create);
